@@ -11,5 +11,5 @@ test("index route", async () => {
   const content = await response.text()
   const parser = new DOMParser()
   const elements = parser.parseFromString(content,"text/html")
-  expect(elements).toEqual(4)
+  expect(elements.querySelector("h1").innerHTML).toEqual("Hello, World!")
 })

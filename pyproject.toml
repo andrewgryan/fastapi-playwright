@@ -19,3 +19,5 @@ distribution = false
 [tool.pdm.scripts]
 start.cmd = "uvicorn main:app"
 start.working_dir = "src/fastapi_vitest"
+test.cmd = "yarn test"
+test.working_dir = "tests/frontend"
