@@ -13,3 +13,11 @@ test("index route", async () => {
   const elements = parser.parseFromString(content,"text/html")
   expect(elements.querySelector("h1").innerHTML).toEqual("Hello, World!")
 })
+
+test("settings route", async () => {
+  const response = await fetch("http://localhost:8000/settings")
+  const content = await response.text()
+  const parser = new DOMParser()
+  const elements = parser.parseFromString(content,"text/html")
+  expect(elements.querySelector("h1").innerHTML).toEqual("User account")
+})
