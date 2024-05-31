@@ -18,8 +18,8 @@ def index(request: Request):
 
 
 @app.post("/clicked", response_class=HTMLResponse)
-def clicked():
-    return "<p>Hello, HTMX!</p>"
+def clicked(request: Request):
+    return templates.TemplateResponse(request=request, name="clicked.html")
 
 
 @app.get("/settings", response_class=HTMLResponse)
