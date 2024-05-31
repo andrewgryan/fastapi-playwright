@@ -1,0 +1,8 @@
+body {
+  font-family: system-ui;
+}
+
+.wrapper {
+  inline-size: min(80ch, 95%);
+  margin-inline: auto;
+}
