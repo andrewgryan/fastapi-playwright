@@ -33,6 +33,7 @@ def clicked():
 
 
 @app.get("/settings", response_class=HTMLResponse)
-def settings():
-    name = "Matt"
+def settings(name: str = None):
+    if name is None:
+        name = "Matt"
     return f"<h1>{name}'s account!</h1>"
