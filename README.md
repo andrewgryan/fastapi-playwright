@@ -1,4 +1,4 @@
-# fastapi-vitest
+# fastapi-playwright
 
 An experiment to see how easy it is to test HTMX + Python applications.
 
