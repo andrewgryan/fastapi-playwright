@@ -1,30 +1,20 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
+TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
+templates = Jinja2Templates(directory=TEMPLATE_DIR)
+
 @app.get("/", response_class=HTMLResponse)
-def index():
-    # HTMX homepage example
-    return """
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="/static/htmx.js"></script>
-    </head>
-    <body>
-        <!-- have a button POST a click via AJAX -->
-        <button hx-post="/clicked" hx-swap="outerHTML">
-            Click Me
-        </button>
-    </body>
-</html>
-"""
+def index(request: Request):
+    return templates.TemplateResponse(request=request, name="index.html")
 
 
 @app.post("/clicked", response_class=HTMLResponse)
