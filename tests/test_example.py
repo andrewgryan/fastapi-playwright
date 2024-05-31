@@ -2,7 +2,7 @@ from multiprocessing import Process
 import uvicorn
 import pytest
 from playwright.sync_api import Page, expect
-from fastapi_vitest.main import app
+from fastapi_playwright.main import app
 
 
 def run_server():
