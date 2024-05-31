@@ -16,10 +16,9 @@ license = {text = "MIT"}
 
 
 [tool.pdm]
-distribution = false
+distribution = true
 
 [tool.pdm.scripts]
 start.cmd = "uvicorn main:app --reload"
 start.working_dir = "src/fastapi_vitest"
-test.cmd = "yarn test"
-test.working_dir = "tests/frontend"
+test = "pytest"
