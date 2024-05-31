@@ -20,7 +20,7 @@ def server():
 def test_htmx_org_example(page: Page, server):
     page.goto("http://127.0.0.1:8000/")
     page.get_by_role("button").click()
-    expect(page.get_by_role("paragraph")).to_be_visible()
+    expect(page.get_by_role("paragraph")).to_contain_text("Hello, HTMX!")
 
 
 def test_settings_default_user(page: Page, server):

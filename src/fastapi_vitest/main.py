@@ -29,7 +29,7 @@ def index():
 
 @app.post("/clicked", response_class=HTMLResponse)
 def clicked():
-    return "<p>Clicked!</p>"
+    return "<p>Hello, HTMX!</p>"
 
 
 @app.get("/settings", response_class=HTMLResponse)
