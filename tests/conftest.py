@@ -9,7 +9,7 @@ def run_server():
     uvicorn.run(app)
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def server():
     proc = Process(target=run_server, args=(), daemon=True)
     proc.start() 
