@@ -1,8 +1,12 @@
+import os
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 def index():
@@ -11,11 +15,11 @@ def index():
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="http://localhost:8000/static/script.js"></script>
+        <script src="/static/htmx.js"></script>
     </head>
     <body>
         <!-- have a button POST a click via AJAX -->
-        <button onclick="console.log('Hello, Click!')">
+        <button hx-post="/clicked" hx-swap="outerHTML">
             Click Me
         </button>
     </body>
@@ -32,7 +36,3 @@ def clicked():
 def settings():
     name = "Matt"
     return f"<h1>{name}'s account!</h1>"
-
-@app.get("/static/script.js", response_class=HTMLResponse)
-def settings():
-    return "console.log('Hello, World!')"
